@@ -1,0 +1,55 @@
+template.py is taken from my own working script
+but with all of the function bodies removed,
+except for advance()
+
+you are free to fill in these function bodies,
+many of which you should have completed in PrairieLearn,
+and (hopefully) the script should work
+
+alternatively, you could just look at the template
+to get an idea of the structure of the simulation
+and construct your own
+
+you'll notice that this implementation is not "optimal"
+in the sense that many things are computed more times than necessary;
+for example, when computing the potential,
+shifting the potential requires one to calculate V(rc),
+which never changes throughout the simulation
+so that in principle one could store the value
+and pass it into potential();
+there are plenty more examples where this happens,
+but it is not worth "fixing":
+such optimizations may speed up the simulation by perhaps a few seconds
+but will add more moving parts that you will have to track and debug
+which will end up wasting significantly more of your actual time
+
+this advice is general:
+unless you are looking to simulate large systems
+and run for thousands of computer hours,
+try not to worry about whether or not
+you are writing the most optimal routines,
+and instead prioritize routines that are conceptually simple,
+and minimize the number of moving parts
+
+even if 3000 steps requires up to an hour, answering the HW
+is still possible, though you will have to be diligent
+about saving your data in order to minimize the number of runs;
+with that being said, this implementation did 3000 steps in a few seconds
+on my personal machine
+
+one last thing:
+you'll notice that advance() is very verbose;
+there are plenty of ways to change this, for example:
+you could just make a class which has
+coordinates, velocities, displacements, and distances
+as attributes,
+and advance() as a method which moves them;
+
+another option is to realize that by default
+python passes arguments by reference,
+so you could just modify pos, vel, disp, and dist
+within the routine;
+personally i try and avoid this
+since it is not explicit to the reader that the objects
+being passed in will be modified
+and can lead to disaster if one is not keeping track
