@@ -1,0 +1,4 @@
+this code is a stripped down version of my own code;
+the meat and potatoes is in the two functions
+    neighbor_indices() and cluster_flip();
+everything else can be modified as you see fit;
